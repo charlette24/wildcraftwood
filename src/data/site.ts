@@ -1,5 +1,5 @@
 export const site = {
-  name: 'WildCraft Wood',
+  name: 'WildCraft Woodworking',
   tagline: 'Oregon timber. Natural edges. Furniture built to endure.',
   description:
     'Live-edge furniture, workshop stories, build videos, and trusted woodworking tools from Oregon.',
@@ -14,21 +14,21 @@ export const site = {
 
 export const projects = [
   {
-    title: 'Black Walnut Dining Table',
-    type: 'Live-edge dining table',
-    description: 'Bookmatched walnut slabs with a restrained natural edge and steel base.',
-    image: '/images/table-walnut.svg',
+    title: 'The Brownsville Lawyer Table (BLT)',
+    type: 'Live-edge conference table',
+    description: 'Bookmatched olive wood slabs with a restrained natural edge and steel base.',
+    image: '/images/table-dmm.svg',
   },
   {
-    title: 'Maple River Desk',
-    type: 'Custom desk',
-    description: 'Figured maple shaped around the original contours of the slab.',
-    image: '/images/table-maple.svg',
-  },
-  {
-    title: 'Oregon Ash Coffee Table',
+    title: 'Coming Soon',
     type: 'Coffee table',
-    description: 'Locally sourced ash with a hand-rubbed matte finish.',
+    description: 'coming soon.',
+    image: '/images/table-coffee.svg',
+  },
+  {
+    title: 'Oregon Coffee Table',
+    type: 'Coffee table',
+    description: 'Locally sourced wood with a river epoxy finish.',
     image: '/images/table-ash.svg',
   },
 ];
@@ -51,7 +51,7 @@ export const tools = [
     affiliate: true,
   },
   {
-    name: 'Favorite hardwax oil',
+    name: 'Favorite epoxy',
     category: 'Finishing',
     note: 'Link to your preferred finish after joining the applicable affiliate program.',
     url: '#',
