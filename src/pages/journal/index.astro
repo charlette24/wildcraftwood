@@ -1,0 +1,9 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+const posts = (await getCollection('journal', ({data}) => !data.draft)).sort((a,b) => b.data.published.valueOf() - a.data.published.valueOf());
+---
+<BaseLayout title="Workshop Journal" description="Build stories, woodworking methods, and tool notes from WildCraft Wood.">
+<section class="section"><div class="container"><p class="eyebrow">Workshop journal</p><h1>Notes from the shop.</h1><div class="grid posts">{posts.map(post => <a class="card" href={`/journal/${post.id}/`}><img src={post.data.image} alt=""/><div class="card-body"><p class="eyebrow">{post.data.category} · {post.data.published.toLocaleDateString('en-US')}</p><h3>{post.data.title}</h3><p class="muted">{post.data.description}</p></div></a>)}</div></div></section>
+</BaseLayout>
+<style>.posts{grid-template-columns:repeat(3,1fr);margin-top:2rem}.card{text-decoration:none}.card img{aspect-ratio:4/3;object-fit:cover}@media(max-width:850px){.posts{grid-template-columns:1fr}}</style>

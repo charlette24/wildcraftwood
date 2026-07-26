@@ -1,0 +1,62 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import VideoCard from '../components/VideoCard.astro';
+import { getCollection } from 'astro:content';
+import { site, projects, videos } from '../data/site';
+const posts = (await getCollection('journal', ({ data }) => !data.draft)).sort((a,b) => b.data.published.valueOf() - a.data.published.valueOf()).slice(0,3);
+---
+<BaseLayout>
+  <section class="hero">
+    <div class="container hero-grid">
+      <div>
+        <p class="eyebrow">Live-edge furniture · Oregon</p>
+        <h1>Wild wood.<br/>Quiet craft.</h1>
+        <p class="lead">{site.tagline}</p>
+        <div class="actions"><a class="button primary" href="#work">See the work</a><a class="button light" href="/journal">Read the journal</a></div>
+      </div>
+      <img src="/images/hero-slab.svg" alt="Abstract live-edge walnut slab and Oregon forest" />
+    </div>
+  </section>
+
+  <section id="work" class="section">
+    <div class="container">
+      <p class="eyebrow">Selected work</p><h2>Furniture shaped by the tree.</h2>
+      <div class="grid projects">
+        {projects.map((project) => <article class="card"><img src={project.image} alt={project.title} /><div class="card-body"><p class="eyebrow">{project.type}</p><h3>{project.title}</h3><p class="muted">{project.description}</p></div></article>)}
+      </div>
+    </div>
+  </section>
+
+  <section class="section dark">
+    <div class="container split">
+      <div><p class="eyebrow">From slab to heirloom</p><h2>We keep the evidence of the tree.</h2></div>
+      <div><p>WildCraft Wood documents the full process: selecting slabs, stabilizing defects, flattening, joinery, sanding, finishing, and installing each finished piece.</p><p>The same site can showcase custom furniture while publishing useful tool reviews and build guides.</p><a class="button light" href="/about">About the workshop</a></div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container"><p class="eyebrow">Workshop journal</p><h2>Build notes and field-tested methods.</h2>
+      <div class="grid posts">{posts.map((post) => <a class="card post" href={`/journal/${post.id}/`}><img src={post.data.image} alt="" /><div class="card-body"><p class="eyebrow">{post.data.category}</p><h3>{post.data.title}</h3><p class="muted">{post.data.description}</p></div></a>)}</div>
+    </div>
+  </section>
+
+  <section class="section video-section">
+    <div class="container"><p class="eyebrow">Latest video</p><h2>Watch the process.</h2><VideoCard {...videos[0]} /></div>
+  </section>
+</BaseLayout>
+<style>
+.hero { padding: 4rem 0 5rem; }
+.hero-grid { display: grid; grid-template-columns: 1.05fr .95fr; align-items: center; gap: 2.5rem; }
+.hero img { border-radius: 45% 45% 12px 12px; box-shadow: var(--shadow); }
+.lead { font-size: clamp(1.15rem, 2vw, 1.5rem); max-width: 620px; }
+.actions { display: flex; gap: .75rem; flex-wrap: wrap; margin-top: 1.5rem; }
+.projects { grid-template-columns: repeat(3, 1fr); margin-top: 2rem; }
+.projects img, .post img { aspect-ratio: 4/3; object-fit: cover; }
+.dark { background: var(--moss); color: var(--paper); }
+.split { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; }
+.posts { grid-template-columns: repeat(3, 1fr); margin-top: 2rem; }
+.post { text-decoration: none; }
+.video-section { background: var(--paper-2); }
+.video-section .video-card { max-width: 900px; margin-top: 2rem; }
+@media (max-width: 850px) { .hero-grid, .split { grid-template-columns: 1fr; } .projects, .posts { grid-template-columns: 1fr; } }
+</style>

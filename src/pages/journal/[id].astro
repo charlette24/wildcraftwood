@@ -1,0 +1,14 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection, render } from 'astro:content';
+export async function getStaticPaths() {
+  const posts = await getCollection('journal', ({ data }) => !data.draft);
+  return posts.map((post) => ({ params: { id: post.id }, props: { post } }));
+}
+const { post } = Astro.props;
+const { Content } = await render(post);
+---
+<BaseLayout title={post.data.title} description={post.data.description} image={post.data.image}>
+<article class="section"><div class="container article"><p class="eyebrow">{post.data.category} · {post.data.published.toLocaleDateString('en-US', {year:'numeric',month:'long',day:'numeric'})}</p><h1>{post.data.title}</h1><p class="dek">{post.data.description}</p><img class="cover" src={post.data.image} alt=""/>{post.data.affiliateDisclosure && <div class="notice"><strong>Affiliate disclosure:</strong> This article may contain affiliate links. WildCraft Wood may earn a commission from qualifying purchases at no additional cost to you.</div>}<div class="richtext"><Content /></div></div></article>
+</BaseLayout>
+<style>.article{max-width:980px}.dek{font-size:1.35rem;max-width:760px}.cover{width:100%;aspect-ratio:16/8;object-fit:cover;border-radius:var(--radius);margin:2rem 0}.richtext{margin-inline:auto}</style>

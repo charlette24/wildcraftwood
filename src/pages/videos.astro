@@ -1,0 +1,7 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import VideoCard from '../components/VideoCard.astro';
+import { videos } from '../data/site';
+---
+<BaseLayout title="Videos" description="WildCraft Wood build videos and workshop demonstrations."><section class="section"><div class="container"><p class="eyebrow">Build videos</p><h1>Watch the work unfold.</h1><p class="lead">Add new videos by editing <code>src/data/site.ts</code> and pasting each YouTube video ID.</p><div class="grid videos">{videos.map(video => <VideoCard {...video}/>)}</div></div></section></BaseLayout>
+<style>.lead{font-size:1.2rem;max-width:700px}.videos{grid-template-columns:repeat(2,1fr);margin-top:2rem}@media(max-width:800px){.videos{grid-template-columns:1fr}}</style>

@@ -1,0 +1,6 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { tools } from '../data/site';
+---
+<BaseLayout title="Tools We Use" description="Field-tested woodworking tools, finishes, and shop systems used by WildCraft Wood."><section class="section"><div class="container"><p class="eyebrow">Tools we use</p><h1>Shop-tested, not shelf-picked.</h1><div class="notice"><strong>Affiliate disclosure:</strong> Some links on this page may earn WildCraft Wood a commission. Recommendations should be based on actual use and honest evaluation.</div><div class="grid tools">{tools.map(tool => <article class="card"><div class="card-body"><p class="eyebrow">{tool.category}</p><h3>{tool.name}</h3><p class="muted">{tool.note}</p><a class="button primary" href={tool.url} rel={tool.affiliate ? 'sponsored nofollow' : undefined}>View product</a></div></article>)}</div></div></section></BaseLayout>
+<style>.tools{grid-template-columns:repeat(3,1fr);margin-top:2rem}@media(max-width:850px){.tools{grid-template-columns:1fr}}</style>

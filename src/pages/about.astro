@@ -1,0 +1,6 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { site } from '../data/site';
+---
+<BaseLayout title="About" description="About WildCraft Wood, an Oregon live-edge furniture workshop."><section class="section"><div class="container split"><div><p class="eyebrow">{site.location}</p><h1>Built around the natural edge.</h1></div><div class="richtext"><p>WildCraft Wood is an independent Oregon workshop focused on live-edge tables and furniture that preserves the movement, grain, and imperfections of the original tree.</p><p>Use this page to tell the real story of the shop: who builds the work, where the wood comes from, what species you favor, and how customers can commission a piece.</p><p>Replace this starter copy directly in <code>src/pages/about.astro</code>.</p></div></div></section></BaseLayout>
+<style>.split{display:grid;grid-template-columns:1fr 1fr;gap:4rem}@media(max-width:800px){.split{grid-template-columns:1fr}}</style>

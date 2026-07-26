@@ -1,0 +1,16 @@
+---
+import { site } from '../data/site';
+---
+<footer>
+  <div class="container foot">
+    <div><strong>{site.name}</strong><p>{site.footerNote}</p></div>
+    <div class="links"><a href="/privacy">Privacy</a><a href="/affiliate-disclosure">Affiliate disclosure</a><a href={`mailto:${site.email}`}>{site.email}</a></div>
+  </div>
+</footer>
+<style>
+footer { padding: 3rem 0; border-top: 1px solid var(--line); background: var(--ink); color: var(--paper); }
+.foot { display: flex; justify-content: space-between; gap: 2rem; }
+p { margin: .25rem 0 0; opacity: .7; }
+.links { display: flex; gap: 1rem; flex-wrap: wrap; align-items: flex-start; }
+@media (max-width: 700px) { .foot { flex-direction: column; } }
+</style>

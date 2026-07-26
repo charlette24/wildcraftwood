@@ -1,0 +1,6 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { site } from '../data/site';
+---
+<BaseLayout title="Contact" description="Contact WildCraft Wood about live-edge furniture and collaborations."><section class="section"><div class="container contact"><p class="eyebrow">Start a conversation</p><h1>Have a slab, space, or table in mind?</h1><p>For commissions, partnerships, or general questions, email <a href={`mailto:${site.email}`}>{site.email}</a>.</p><a class="button primary" href={`mailto:${site.email}?subject=WildCraft%20Wood%20inquiry`}>Email the workshop</a></div></section></BaseLayout>
+<style>.contact{max-width:850px}.contact p{font-size:1.25rem}</style>
